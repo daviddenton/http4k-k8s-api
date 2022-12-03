@@ -1,5 +1,5 @@
 package http4k.k8s.model.io.k8s.api.core.v1
 
 data class NodeConfigSource(
-	val configMap: ConfigMapNodeConfigSource?
+    val configMap: ConfigMapNodeConfigSource?
 )

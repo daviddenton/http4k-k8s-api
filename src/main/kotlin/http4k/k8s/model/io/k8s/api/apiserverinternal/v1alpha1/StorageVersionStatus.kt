@@ -1,10 +1,7 @@
 package http4k.k8s.model.io.k8s.api.apiserverinternal.v1alpha1
 
-import kotlin.String
-import kotlin.collections.List
-
 data class StorageVersionStatus(
-	val commonEncodingVersion: String?,
-	val conditions: List<StorageVersionCondition>?,
-	val storageVersions: List<ServerStorageVersion>?
+    val commonEncodingVersion: String?,
+    val conditions: List<StorageVersionCondition>?,
+    val storageVersions: List<ServerStorageVersion>?
 )

@@ -1,6 +1,6 @@
 package http4k.k8s.model.io.k8s.api.autoscaling.v2
 
 data class PodsMetricSource(
-	val metric: MetricIdentifier,
-	val target: MetricTarget
+    val metric: MetricIdentifier,
+    val target: MetricTarget
 )

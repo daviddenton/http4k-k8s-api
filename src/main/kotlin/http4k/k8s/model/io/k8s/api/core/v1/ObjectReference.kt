@@ -1,13 +1,11 @@
 package http4k.k8s.model.io.k8s.api.core.v1
 
-import kotlin.String
-
 data class ObjectReference(
-	val apiVersion: String?,
-	val fieldPath: String?,
-	val kind: String?,
-	val name: String?,
-	val namespace: String?,
-	val resourceVersion: String?,
-	val uid: String?
+    val apiVersion: String?,
+    val fieldPath: String?,
+    val kind: String?,
+    val name: String?,
+    val namespace: String?,
+    val resourceVersion: String?,
+    val uid: String?
 )

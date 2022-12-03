@@ -1,8 +1,6 @@
 package http4k.k8s.model.io.k8s.api.core.v1
 
-import kotlin.String
-
 data class ClaimSource(
-	val resourceClaimName: String?,
-	val resourceClaimTemplateName: String?
+    val resourceClaimName: String?,
+    val resourceClaimTemplateName: String?
 )
