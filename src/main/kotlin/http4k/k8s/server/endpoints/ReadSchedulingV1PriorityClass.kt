@@ -22,14 +22,14 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReadSchedulingV1PriorityClass(): RoutingHttpHandler {
-	val iok8sapischedulingv1PriorityClassLens = Body.auto<PriorityClass>().toLens()
-	val nameLens = Path.string().of("name")
-	val prettyLens = Query.string().optional("pretty")
+    val iok8sapischedulingv1PriorityClassLens = Body.auto<PriorityClass>().toLens()
+    val nameLens = Path.string().of("name")
+    val prettyLens = Query.string().optional("pretty")
 
-	return "/apis/scheduling.k8s.io/v1/priorityclasses/{name}" bind Method.GET to { req: Request ->
-		val name = nameLens(req)
-		val pretty = prettyLens(req)
-		Response(Status.OK)
-			.with(iok8sapischedulingv1PriorityClassLens of TODO())
-	}
+    return "/apis/scheduling.k8s.io/v1/priorityclasses/{name}" bind Method.GET to { req: Request ->
+        val name = nameLens(req)
+        val pretty = prettyLens(req)
+        Response(Status.OK)
+            .with(iok8sapischedulingv1PriorityClassLens of TODO())
+    }
 }

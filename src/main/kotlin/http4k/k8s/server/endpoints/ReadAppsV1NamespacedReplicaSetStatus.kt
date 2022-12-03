@@ -22,16 +22,16 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReadAppsV1NamespacedReplicaSetStatus(): RoutingHttpHandler {
-	val iok8sapiappsv1ReplicaSetLens = Body.auto<ReplicaSet>().toLens()
-	val nameLens = Path.string().of("name")
-	val namespaceLens = Path.string().of("namespace")
-	val prettyLens = Query.string().optional("pretty")
+    val iok8sapiappsv1ReplicaSetLens = Body.auto<ReplicaSet>().toLens()
+    val nameLens = Path.string().of("name")
+    val namespaceLens = Path.string().of("namespace")
+    val prettyLens = Query.string().optional("pretty")
 
-	return "/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status" bind Method.GET to { req: Request ->
-		val name = nameLens(req)
-		val namespace = namespaceLens(req)
-		val pretty = prettyLens(req)
-		Response(Status.OK)
-			.with(iok8sapiappsv1ReplicaSetLens of TODO())
-	}
+    return "/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status" bind Method.GET to { req: Request ->
+        val name = nameLens(req)
+        val namespace = namespaceLens(req)
+        val pretty = prettyLens(req)
+        Response(Status.OK)
+            .with(iok8sapiappsv1ReplicaSetLens of TODO())
+    }
 }

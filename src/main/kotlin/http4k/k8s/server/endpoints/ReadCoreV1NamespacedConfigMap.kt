@@ -22,16 +22,16 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReadCoreV1NamespacedConfigMap(): RoutingHttpHandler {
-	val iok8sapicorev1ConfigMapLens = Body.auto<ConfigMap>().toLens()
-	val nameLens = Path.string().of("name")
-	val namespaceLens = Path.string().of("namespace")
-	val prettyLens = Query.string().optional("pretty")
+    val iok8sapicorev1ConfigMapLens = Body.auto<ConfigMap>().toLens()
+    val nameLens = Path.string().of("name")
+    val namespaceLens = Path.string().of("namespace")
+    val prettyLens = Query.string().optional("pretty")
 
-	return "/api/v1/namespaces/{namespace}/configmaps/{name}" bind Method.GET to { req: Request ->
-		val name = nameLens(req)
-		val namespace = namespaceLens(req)
-		val pretty = prettyLens(req)
-		Response(Status.OK)
-			.with(iok8sapicorev1ConfigMapLens of TODO())
-	}
+    return "/api/v1/namespaces/{namespace}/configmaps/{name}" bind Method.GET to { req: Request ->
+        val name = nameLens(req)
+        val namespace = namespaceLens(req)
+        val pretty = prettyLens(req)
+        Response(Status.OK)
+            .with(iok8sapicorev1ConfigMapLens of TODO())
+    }
 }

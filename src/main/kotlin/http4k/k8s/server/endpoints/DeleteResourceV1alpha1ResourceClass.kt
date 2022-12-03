@@ -8,7 +8,6 @@ import org.http4k.core.Request
 import org.http4k.core.Response
 import org.http4k.core.Status
 import org.http4k.core.with
-import org.http4k.format.Jackson
 import org.http4k.format.Jackson.auto
 import org.http4k.lens.Path
 import org.http4k.lens.Query
@@ -21,7 +20,7 @@ import org.http4k.routing.bind
 /**
  * delete a ResourceClass
  * Request:
- * 	* / * 
+ * 	* / *
  * Response:
  * 	application/json
  * 		200 OK
@@ -29,24 +28,24 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun DeleteResourceV1alpha1ResourceClass(): RoutingHttpHandler {
-	val iok8sapimachinerypkgapismetav1DeleteOptionsLens = Body.auto<DeleteOptions>().toLens()
-	val iok8sapiresourcev1alpha1ResourceClassLens = Body.auto<ResourceClass>().toLens()
-	val nameLens = Path.string().of("name")
-	val prettyLens = Query.string().optional("pretty")
-	val dryRunLens = Query.string().optional("dryRun")
-	val gracePeriodSecondsLens = Query.int().optional("gracePeriodSeconds")
-	val orphanDependentsLens = Query.boolean().optional("orphanDependents")
-	val propagationPolicyLens = Query.string().optional("propagationPolicy")
+    val iok8sapimachinerypkgapismetav1DeleteOptionsLens = Body.auto<DeleteOptions>().toLens()
+    val iok8sapiresourcev1alpha1ResourceClassLens = Body.auto<ResourceClass>().toLens()
+    val nameLens = Path.string().of("name")
+    val prettyLens = Query.string().optional("pretty")
+    val dryRunLens = Query.string().optional("dryRun")
+    val gracePeriodSecondsLens = Query.int().optional("gracePeriodSeconds")
+    val orphanDependentsLens = Query.boolean().optional("orphanDependents")
+    val propagationPolicyLens = Query.string().optional("propagationPolicy")
 
-	return "/apis/resource.k8s.io/v1alpha1/resourceclasses/{name}" bind Method.DELETE to { req: Request ->
-		val name = nameLens(req)
-		val pretty = prettyLens(req)
-		val dryRun = dryRunLens(req)
-		val gracePeriodSeconds = gracePeriodSecondsLens(req)
-		val orphanDependents = orphanDependentsLens(req)
-		val propagationPolicy = propagationPolicyLens(req)
-		val iok8sapimachinerypkgapismetav1DeleteOptions = iok8sapimachinerypkgapismetav1DeleteOptionsLens(req)
-		Response(Status.OK)
-			.with(iok8sapiresourcev1alpha1ResourceClassLens of TODO())
-	}
+    return "/apis/resource.k8s.io/v1alpha1/resourceclasses/{name}" bind Method.DELETE to { req: Request ->
+        val name = nameLens(req)
+        val pretty = prettyLens(req)
+        val dryRun = dryRunLens(req)
+        val gracePeriodSeconds = gracePeriodSecondsLens(req)
+        val orphanDependents = orphanDependentsLens(req)
+        val propagationPolicy = propagationPolicyLens(req)
+        val iok8sapimachinerypkgapismetav1DeleteOptions = iok8sapimachinerypkgapismetav1DeleteOptionsLens(req)
+        Response(Status.OK)
+            .with(iok8sapiresourcev1alpha1ResourceClassLens of TODO())
+    }
 }

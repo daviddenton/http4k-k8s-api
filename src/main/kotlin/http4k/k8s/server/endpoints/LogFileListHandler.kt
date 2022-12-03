@@ -14,7 +14,7 @@ import org.http4k.routing.bind
  */
 fun LogFileListHandler(): RoutingHttpHandler {
 
-	return "/logs/" bind Method.GET to { req: Request ->
-		Response(Status.OK)
-	}
+    return "/logs/" bind Method.GET to { req: Request ->
+        Response(Status.OK)
+    }
 }

@@ -22,16 +22,16 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReadBatchV1NamespacedJob(): RoutingHttpHandler {
-	val iok8sapibatchv1JobLens = Body.auto<Job>().toLens()
-	val nameLens = Path.string().of("name")
-	val namespaceLens = Path.string().of("namespace")
-	val prettyLens = Query.string().optional("pretty")
+    val iok8sapibatchv1JobLens = Body.auto<Job>().toLens()
+    val nameLens = Path.string().of("name")
+    val namespaceLens = Path.string().of("namespace")
+    val prettyLens = Query.string().optional("pretty")
 
-	return "/apis/batch/v1/namespaces/{namespace}/jobs/{name}" bind Method.GET to { req: Request ->
-		val name = nameLens(req)
-		val namespace = namespaceLens(req)
-		val pretty = prettyLens(req)
-		Response(Status.OK)
-			.with(iok8sapibatchv1JobLens of TODO())
-	}
+    return "/apis/batch/v1/namespaces/{namespace}/jobs/{name}" bind Method.GET to { req: Request ->
+        val name = nameLens(req)
+        val namespace = namespaceLens(req)
+        val pretty = prettyLens(req)
+        Response(Status.OK)
+            .with(iok8sapibatchv1JobLens of TODO())
+    }
 }

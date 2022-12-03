@@ -16,7 +16,7 @@ import org.http4k.routing.bind
 /**
  * create a ValidatingWebhookConfiguration
  * Request:
- * 	* / * 
+ * 	* / *
  * Response:
  * 	application/json
  * 		200 OK
@@ -25,20 +25,21 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun CreateAdmissionregistrationV1ValidatingWebhookConfiguration(): RoutingHttpHandler {
-	val iok8sapiadmissionregistrationv1ValidatingWebhookConfigurationLens =
-			Body.auto<ValidatingWebhookConfiguration>().toLens()
-	val prettyLens = Query.string().optional("pretty")
-	val dryRunLens = Query.string().optional("dryRun")
-	val fieldManagerLens = Query.string().optional("fieldManager")
-	val fieldValidationLens = Query.string().optional("fieldValidation")
+    val iok8sapiadmissionregistrationv1ValidatingWebhookConfigurationLens =
+        Body.auto<ValidatingWebhookConfiguration>().toLens()
+    val prettyLens = Query.string().optional("pretty")
+    val dryRunLens = Query.string().optional("dryRun")
+    val fieldManagerLens = Query.string().optional("fieldManager")
+    val fieldValidationLens = Query.string().optional("fieldValidation")
 
-	return "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations" bind Method.POST to { req: Request ->
-		val pretty = prettyLens(req)
-		val dryRun = dryRunLens(req)
-		val fieldManager = fieldManagerLens(req)
-		val fieldValidation = fieldValidationLens(req)
-		val iok8sapiadmissionregistrationv1ValidatingWebhookConfiguration = iok8sapiadmissionregistrationv1ValidatingWebhookConfigurationLens(req)
-		Response(Status.OK)
-			.with(iok8sapiadmissionregistrationv1ValidatingWebhookConfigurationLens of TODO())
-	}
+    return "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations" bind Method.POST to { req: Request ->
+        val pretty = prettyLens(req)
+        val dryRun = dryRunLens(req)
+        val fieldManager = fieldManagerLens(req)
+        val fieldValidation = fieldValidationLens(req)
+        val iok8sapiadmissionregistrationv1ValidatingWebhookConfiguration =
+            iok8sapiadmissionregistrationv1ValidatingWebhookConfigurationLens(req)
+        Response(Status.OK)
+            .with(iok8sapiadmissionregistrationv1ValidatingWebhookConfigurationLens of TODO())
+    }
 }

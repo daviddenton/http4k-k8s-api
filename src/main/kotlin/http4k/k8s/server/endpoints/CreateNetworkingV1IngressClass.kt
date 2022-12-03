@@ -16,7 +16,7 @@ import org.http4k.routing.bind
 /**
  * create an IngressClass
  * Request:
- * 	* / * 
+ * 	* / *
  * Response:
  * 	application/json
  * 		200 OK
@@ -25,19 +25,19 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun CreateNetworkingV1IngressClass(): RoutingHttpHandler {
-	val iok8sapinetworkingv1IngressClassLens = Body.auto<IngressClass>().toLens()
-	val prettyLens = Query.string().optional("pretty")
-	val dryRunLens = Query.string().optional("dryRun")
-	val fieldManagerLens = Query.string().optional("fieldManager")
-	val fieldValidationLens = Query.string().optional("fieldValidation")
+    val iok8sapinetworkingv1IngressClassLens = Body.auto<IngressClass>().toLens()
+    val prettyLens = Query.string().optional("pretty")
+    val dryRunLens = Query.string().optional("dryRun")
+    val fieldManagerLens = Query.string().optional("fieldManager")
+    val fieldValidationLens = Query.string().optional("fieldValidation")
 
-	return "/apis/networking.k8s.io/v1/ingressclasses" bind Method.POST to { req: Request ->
-		val pretty = prettyLens(req)
-		val dryRun = dryRunLens(req)
-		val fieldManager = fieldManagerLens(req)
-		val fieldValidation = fieldValidationLens(req)
-		val iok8sapinetworkingv1IngressClass = iok8sapinetworkingv1IngressClassLens(req)
-		Response(Status.OK)
-			.with(iok8sapinetworkingv1IngressClassLens of TODO())
-	}
+    return "/apis/networking.k8s.io/v1/ingressclasses" bind Method.POST to { req: Request ->
+        val pretty = prettyLens(req)
+        val dryRun = dryRunLens(req)
+        val fieldManager = fieldManagerLens(req)
+        val fieldValidation = fieldValidationLens(req)
+        val iok8sapinetworkingv1IngressClass = iok8sapinetworkingv1IngressClassLens(req)
+        Response(Status.OK)
+            .with(iok8sapinetworkingv1IngressClassLens of TODO())
+    }
 }

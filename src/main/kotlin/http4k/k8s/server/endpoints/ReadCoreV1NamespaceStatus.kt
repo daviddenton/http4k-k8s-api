@@ -22,14 +22,14 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReadCoreV1NamespaceStatus(): RoutingHttpHandler {
-	val iok8sapicorev1NamespaceLens = Body.auto<Namespace>().toLens()
-	val nameLens = Path.string().of("name")
-	val prettyLens = Query.string().optional("pretty")
+    val iok8sapicorev1NamespaceLens = Body.auto<Namespace>().toLens()
+    val nameLens = Path.string().of("name")
+    val prettyLens = Query.string().optional("pretty")
 
-	return "/api/v1/namespaces/{name}/status" bind Method.GET to { req: Request ->
-		val name = nameLens(req)
-		val pretty = prettyLens(req)
-		Response(Status.OK)
-			.with(iok8sapicorev1NamespaceLens of TODO())
-	}
+    return "/api/v1/namespaces/{name}/status" bind Method.GET to { req: Request ->
+        val name = nameLens(req)
+        val pretty = prettyLens(req)
+        Response(Status.OK)
+            .with(iok8sapicorev1NamespaceLens of TODO())
+    }
 }

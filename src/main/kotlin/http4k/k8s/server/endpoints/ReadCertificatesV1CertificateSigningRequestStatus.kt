@@ -22,15 +22,15 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReadCertificatesV1CertificateSigningRequestStatus(): RoutingHttpHandler {
-	val iok8sapicertificatesv1CertificateSigningRequestLens =
-			Body.auto<CertificateSigningRequest>().toLens()
-	val nameLens = Path.string().of("name")
-	val prettyLens = Query.string().optional("pretty")
+    val iok8sapicertificatesv1CertificateSigningRequestLens =
+        Body.auto<CertificateSigningRequest>().toLens()
+    val nameLens = Path.string().of("name")
+    val prettyLens = Query.string().optional("pretty")
 
-	return "/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status" bind Method.GET to { req: Request ->
-		val name = nameLens(req)
-		val pretty = prettyLens(req)
-		Response(Status.OK)
-			.with(iok8sapicertificatesv1CertificateSigningRequestLens of TODO())
-	}
+    return "/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status" bind Method.GET to { req: Request ->
+        val name = nameLens(req)
+        val pretty = prettyLens(req)
+        Response(Status.OK)
+            .with(iok8sapicertificatesv1CertificateSigningRequestLens of TODO())
+    }
 }

@@ -17,7 +17,7 @@ import org.http4k.routing.bind
 /**
  * create a Binding
  * Request:
- * 	* / * 
+ * 	* / *
  * Response:
  * 	application/json
  * 		200 OK
@@ -26,21 +26,21 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun CreateCoreV1NamespacedBinding(): RoutingHttpHandler {
-	val iok8sapicorev1BindingLens = Body.auto<Binding>().toLens()
-	val dryRunLens = Query.string().optional("dryRun")
-	val fieldManagerLens = Query.string().optional("fieldManager")
-	val fieldValidationLens = Query.string().optional("fieldValidation")
-	val namespaceLens = Path.string().of("namespace")
-	val prettyLens = Query.string().optional("pretty")
+    val iok8sapicorev1BindingLens = Body.auto<Binding>().toLens()
+    val dryRunLens = Query.string().optional("dryRun")
+    val fieldManagerLens = Query.string().optional("fieldManager")
+    val fieldValidationLens = Query.string().optional("fieldValidation")
+    val namespaceLens = Path.string().of("namespace")
+    val prettyLens = Query.string().optional("pretty")
 
-	return "/api/v1/namespaces/{namespace}/bindings" bind Method.POST to { req: Request ->
-		val dryRun = dryRunLens(req)
-		val fieldManager = fieldManagerLens(req)
-		val fieldValidation = fieldValidationLens(req)
-		val namespace = namespaceLens(req)
-		val pretty = prettyLens(req)
-		val iok8sapicorev1Binding = iok8sapicorev1BindingLens(req)
-		Response(Status.OK)
-			.with(iok8sapicorev1BindingLens of TODO())
-	}
+    return "/api/v1/namespaces/{namespace}/bindings" bind Method.POST to { req: Request ->
+        val dryRun = dryRunLens(req)
+        val fieldManager = fieldManagerLens(req)
+        val fieldValidation = fieldValidationLens(req)
+        val namespace = namespaceLens(req)
+        val pretty = prettyLens(req)
+        val iok8sapicorev1Binding = iok8sapicorev1BindingLens(req)
+        Response(Status.OK)
+            .with(iok8sapicorev1BindingLens of TODO())
+    }
 }

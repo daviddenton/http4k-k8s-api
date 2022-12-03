@@ -19,10 +19,10 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun GetAPIVersions(): RoutingHttpHandler {
-	val iok8sapimachinerypkgapismetav1APIGroupListLens = Body.auto<APIGroupList>().toLens()
+    val iok8sapimachinerypkgapismetav1APIGroupListLens = Body.auto<APIGroupList>().toLens()
 
-	return "/apis/" bind Method.GET to { req: Request ->
-		Response(Status.OK)
-			.with(iok8sapimachinerypkgapismetav1APIGroupListLens of TODO())
-	}
+    return "/apis/" bind Method.GET to { req: Request ->
+        Response(Status.OK)
+            .with(iok8sapimachinerypkgapismetav1APIGroupListLens of TODO())
+    }
 }

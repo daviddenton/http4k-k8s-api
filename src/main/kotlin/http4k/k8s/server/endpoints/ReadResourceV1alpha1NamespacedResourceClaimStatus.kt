@@ -22,16 +22,16 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReadResourceV1alpha1NamespacedResourceClaimStatus(): RoutingHttpHandler {
-	val iok8sapiresourcev1alpha1ResourceClaimLens = Body.auto<ResourceClaim>().toLens()
-	val nameLens = Path.string().of("name")
-	val namespaceLens = Path.string().of("namespace")
-	val prettyLens = Query.string().optional("pretty")
+    val iok8sapiresourcev1alpha1ResourceClaimLens = Body.auto<ResourceClaim>().toLens()
+    val nameLens = Path.string().of("name")
+    val namespaceLens = Path.string().of("namespace")
+    val prettyLens = Query.string().optional("pretty")
 
-	return "/apis/resource.k8s.io/v1alpha1/namespaces/{namespace}/resourceclaims/{name}/status" bind Method.GET to { req: Request ->
-		val name = nameLens(req)
-		val namespace = namespaceLens(req)
-		val pretty = prettyLens(req)
-		Response(Status.OK)
-			.with(iok8sapiresourcev1alpha1ResourceClaimLens of TODO())
-	}
+    return "/apis/resource.k8s.io/v1alpha1/namespaces/{namespace}/resourceclaims/{name}/status" bind Method.GET to { req: Request ->
+        val name = nameLens(req)
+        val namespace = namespaceLens(req)
+        val pretty = prettyLens(req)
+        Response(Status.OK)
+            .with(iok8sapiresourcev1alpha1ResourceClaimLens of TODO())
+    }
 }

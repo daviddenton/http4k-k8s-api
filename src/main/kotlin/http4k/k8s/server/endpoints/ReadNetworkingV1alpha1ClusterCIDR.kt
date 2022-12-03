@@ -22,14 +22,14 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReadNetworkingV1alpha1ClusterCIDR(): RoutingHttpHandler {
-	val iok8sapinetworkingv1alpha1ClusterCIDRLens = Body.auto<ClusterCIDR>().toLens()
-	val nameLens = Path.string().of("name")
-	val prettyLens = Query.string().optional("pretty")
+    val iok8sapinetworkingv1alpha1ClusterCIDRLens = Body.auto<ClusterCIDR>().toLens()
+    val nameLens = Path.string().of("name")
+    val prettyLens = Query.string().optional("pretty")
 
-	return "/apis/networking.k8s.io/v1alpha1/clustercidrs/{name}" bind Method.GET to { req: Request ->
-		val name = nameLens(req)
-		val pretty = prettyLens(req)
-		Response(Status.OK)
-			.with(iok8sapinetworkingv1alpha1ClusterCIDRLens of TODO())
-	}
+    return "/apis/networking.k8s.io/v1alpha1/clustercidrs/{name}" bind Method.GET to { req: Request ->
+        val name = nameLens(req)
+        val pretty = prettyLens(req)
+        Response(Status.OK)
+            .with(iok8sapinetworkingv1alpha1ClusterCIDRLens of TODO())
+    }
 }

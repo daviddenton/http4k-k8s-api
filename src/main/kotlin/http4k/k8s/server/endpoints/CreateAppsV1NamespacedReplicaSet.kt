@@ -17,7 +17,7 @@ import org.http4k.routing.bind
 /**
  * create a ReplicaSet
  * Request:
- * 	* / * 
+ * 	* / *
  * Response:
  * 	application/json
  * 		200 OK
@@ -26,21 +26,21 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun CreateAppsV1NamespacedReplicaSet(): RoutingHttpHandler {
-	val iok8sapiappsv1ReplicaSetLens = Body.auto<ReplicaSet>().toLens()
-	val namespaceLens = Path.string().of("namespace")
-	val prettyLens = Query.string().optional("pretty")
-	val dryRunLens = Query.string().optional("dryRun")
-	val fieldManagerLens = Query.string().optional("fieldManager")
-	val fieldValidationLens = Query.string().optional("fieldValidation")
+    val iok8sapiappsv1ReplicaSetLens = Body.auto<ReplicaSet>().toLens()
+    val namespaceLens = Path.string().of("namespace")
+    val prettyLens = Query.string().optional("pretty")
+    val dryRunLens = Query.string().optional("dryRun")
+    val fieldManagerLens = Query.string().optional("fieldManager")
+    val fieldValidationLens = Query.string().optional("fieldValidation")
 
-	return "/apis/apps/v1/namespaces/{namespace}/replicasets" bind Method.POST to { req: Request ->
-		val namespace = namespaceLens(req)
-		val pretty = prettyLens(req)
-		val dryRun = dryRunLens(req)
-		val fieldManager = fieldManagerLens(req)
-		val fieldValidation = fieldValidationLens(req)
-		val iok8sapiappsv1ReplicaSet = iok8sapiappsv1ReplicaSetLens(req)
-		Response(Status.OK)
-			.with(iok8sapiappsv1ReplicaSetLens of TODO())
-	}
+    return "/apis/apps/v1/namespaces/{namespace}/replicasets" bind Method.POST to { req: Request ->
+        val namespace = namespaceLens(req)
+        val pretty = prettyLens(req)
+        val dryRun = dryRunLens(req)
+        val fieldManager = fieldManagerLens(req)
+        val fieldValidation = fieldValidationLens(req)
+        val iok8sapiappsv1ReplicaSet = iok8sapiappsv1ReplicaSetLens(req)
+        Response(Status.OK)
+            .with(iok8sapiappsv1ReplicaSetLens of TODO())
+    }
 }

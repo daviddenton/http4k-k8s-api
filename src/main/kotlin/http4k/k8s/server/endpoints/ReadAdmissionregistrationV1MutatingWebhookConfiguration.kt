@@ -22,15 +22,15 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReadAdmissionregistrationV1MutatingWebhookConfiguration(): RoutingHttpHandler {
-	val iok8sapiadmissionregistrationv1MutatingWebhookConfigurationLens =
-			Body.auto<MutatingWebhookConfiguration>().toLens()
-	val nameLens = Path.string().of("name")
-	val prettyLens = Query.string().optional("pretty")
+    val iok8sapiadmissionregistrationv1MutatingWebhookConfigurationLens =
+        Body.auto<MutatingWebhookConfiguration>().toLens()
+    val nameLens = Path.string().of("name")
+    val prettyLens = Query.string().optional("pretty")
 
-	return "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}" bind Method.GET to { req: Request ->
-		val name = nameLens(req)
-		val pretty = prettyLens(req)
-		Response(Status.OK)
-			.with(iok8sapiadmissionregistrationv1MutatingWebhookConfigurationLens of TODO())
-	}
+    return "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}" bind Method.GET to { req: Request ->
+        val name = nameLens(req)
+        val pretty = prettyLens(req)
+        Response(Status.OK)
+            .with(iok8sapiadmissionregistrationv1MutatingWebhookConfigurationLens of TODO())
+    }
 }

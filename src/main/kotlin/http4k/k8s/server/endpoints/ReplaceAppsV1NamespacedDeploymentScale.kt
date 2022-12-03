@@ -17,7 +17,7 @@ import org.http4k.routing.bind
 /**
  * replace scale of the specified Deployment
  * Request:
- * 	* / * 
+ * 	* / *
  * Response:
  * 	application/json
  * 		200 OK
@@ -25,23 +25,23 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReplaceAppsV1NamespacedDeploymentScale(): RoutingHttpHandler {
-	val iok8sapiautoscalingv1ScaleLens = Body.auto<Scale>().toLens()
-	val nameLens = Path.string().of("name")
-	val namespaceLens = Path.string().of("namespace")
-	val prettyLens = Query.string().optional("pretty")
-	val dryRunLens = Query.string().optional("dryRun")
-	val fieldManagerLens = Query.string().optional("fieldManager")
-	val fieldValidationLens = Query.string().optional("fieldValidation")
+    val iok8sapiautoscalingv1ScaleLens = Body.auto<Scale>().toLens()
+    val nameLens = Path.string().of("name")
+    val namespaceLens = Path.string().of("namespace")
+    val prettyLens = Query.string().optional("pretty")
+    val dryRunLens = Query.string().optional("dryRun")
+    val fieldManagerLens = Query.string().optional("fieldManager")
+    val fieldValidationLens = Query.string().optional("fieldValidation")
 
-	return "/apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale" bind Method.PUT to { req: Request ->
-		val name = nameLens(req)
-		val namespace = namespaceLens(req)
-		val pretty = prettyLens(req)
-		val dryRun = dryRunLens(req)
-		val fieldManager = fieldManagerLens(req)
-		val fieldValidation = fieldValidationLens(req)
-		val iok8sapiautoscalingv1Scale = iok8sapiautoscalingv1ScaleLens(req)
-		Response(Status.OK)
-			.with(iok8sapiautoscalingv1ScaleLens of TODO())
-	}
+    return "/apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale" bind Method.PUT to { req: Request ->
+        val name = nameLens(req)
+        val namespace = namespaceLens(req)
+        val pretty = prettyLens(req)
+        val dryRun = dryRunLens(req)
+        val fieldManager = fieldManagerLens(req)
+        val fieldValidation = fieldValidationLens(req)
+        val iok8sapiautoscalingv1Scale = iok8sapiautoscalingv1ScaleLens(req)
+        Response(Status.OK)
+            .with(iok8sapiautoscalingv1ScaleLens of TODO())
+    }
 }

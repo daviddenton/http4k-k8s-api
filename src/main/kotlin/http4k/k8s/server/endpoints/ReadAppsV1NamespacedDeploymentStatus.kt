@@ -22,16 +22,16 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReadAppsV1NamespacedDeploymentStatus(): RoutingHttpHandler {
-	val iok8sapiappsv1DeploymentLens = Body.auto<Deployment>().toLens()
-	val nameLens = Path.string().of("name")
-	val namespaceLens = Path.string().of("namespace")
-	val prettyLens = Query.string().optional("pretty")
+    val iok8sapiappsv1DeploymentLens = Body.auto<Deployment>().toLens()
+    val nameLens = Path.string().of("name")
+    val namespaceLens = Path.string().of("namespace")
+    val prettyLens = Query.string().optional("pretty")
 
-	return "/apis/apps/v1/namespaces/{namespace}/deployments/{name}/status" bind Method.GET to { req: Request ->
-		val name = nameLens(req)
-		val namespace = namespaceLens(req)
-		val pretty = prettyLens(req)
-		Response(Status.OK)
-			.with(iok8sapiappsv1DeploymentLens of TODO())
-	}
+    return "/apis/apps/v1/namespaces/{namespace}/deployments/{name}/status" bind Method.GET to { req: Request ->
+        val name = nameLens(req)
+        val namespace = namespaceLens(req)
+        val pretty = prettyLens(req)
+        Response(Status.OK)
+            .with(iok8sapiappsv1DeploymentLens of TODO())
+    }
 }

@@ -16,7 +16,7 @@ import org.http4k.routing.bind
 /**
  * create a VolumeAttachment
  * Request:
- * 	* / * 
+ * 	* / *
  * Response:
  * 	application/json
  * 		200 OK
@@ -25,19 +25,19 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun CreateStorageV1VolumeAttachment(): RoutingHttpHandler {
-	val iok8sapistoragev1VolumeAttachmentLens = Body.auto<VolumeAttachment>().toLens()
-	val prettyLens = Query.string().optional("pretty")
-	val dryRunLens = Query.string().optional("dryRun")
-	val fieldManagerLens = Query.string().optional("fieldManager")
-	val fieldValidationLens = Query.string().optional("fieldValidation")
+    val iok8sapistoragev1VolumeAttachmentLens = Body.auto<VolumeAttachment>().toLens()
+    val prettyLens = Query.string().optional("pretty")
+    val dryRunLens = Query.string().optional("dryRun")
+    val fieldManagerLens = Query.string().optional("fieldManager")
+    val fieldValidationLens = Query.string().optional("fieldValidation")
 
-	return "/apis/storage.k8s.io/v1/volumeattachments" bind Method.POST to { req: Request ->
-		val pretty = prettyLens(req)
-		val dryRun = dryRunLens(req)
-		val fieldManager = fieldManagerLens(req)
-		val fieldValidation = fieldValidationLens(req)
-		val iok8sapistoragev1VolumeAttachment = iok8sapistoragev1VolumeAttachmentLens(req)
-		Response(Status.OK)
-			.with(iok8sapistoragev1VolumeAttachmentLens of TODO())
-	}
+    return "/apis/storage.k8s.io/v1/volumeattachments" bind Method.POST to { req: Request ->
+        val pretty = prettyLens(req)
+        val dryRun = dryRunLens(req)
+        val fieldManager = fieldManagerLens(req)
+        val fieldValidation = fieldValidationLens(req)
+        val iok8sapistoragev1VolumeAttachment = iok8sapistoragev1VolumeAttachmentLens(req)
+        Response(Status.OK)
+            .with(iok8sapistoragev1VolumeAttachmentLens of TODO())
+    }
 }

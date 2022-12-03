@@ -22,16 +22,16 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReadCoordinationV1NamespacedLease(): RoutingHttpHandler {
-	val iok8sapicoordinationv1LeaseLens = Body.auto<Lease>().toLens()
-	val nameLens = Path.string().of("name")
-	val namespaceLens = Path.string().of("namespace")
-	val prettyLens = Query.string().optional("pretty")
+    val iok8sapicoordinationv1LeaseLens = Body.auto<Lease>().toLens()
+    val nameLens = Path.string().of("name")
+    val namespaceLens = Path.string().of("namespace")
+    val prettyLens = Query.string().optional("pretty")
 
-	return "/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}" bind Method.GET to { req: Request ->
-		val name = nameLens(req)
-		val namespace = namespaceLens(req)
-		val pretty = prettyLens(req)
-		Response(Status.OK)
-			.with(iok8sapicoordinationv1LeaseLens of TODO())
-	}
+    return "/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}" bind Method.GET to { req: Request ->
+        val name = nameLens(req)
+        val namespace = namespaceLens(req)
+        val pretty = prettyLens(req)
+        Response(Status.OK)
+            .with(iok8sapicoordinationv1LeaseLens of TODO())
+    }
 }

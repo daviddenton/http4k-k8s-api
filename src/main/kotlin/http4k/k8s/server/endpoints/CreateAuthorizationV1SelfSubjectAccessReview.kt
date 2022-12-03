@@ -16,7 +16,7 @@ import org.http4k.routing.bind
 /**
  * create a SelfSubjectAccessReview
  * Request:
- * 	* / * 
+ * 	* / *
  * Response:
  * 	application/json
  * 		200 OK
@@ -25,20 +25,20 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun CreateAuthorizationV1SelfSubjectAccessReview(): RoutingHttpHandler {
-	val iok8sapiauthorizationv1SelfSubjectAccessReviewLens =
-			Body.auto<SelfSubjectAccessReview>().toLens()
-	val dryRunLens = Query.string().optional("dryRun")
-	val fieldManagerLens = Query.string().optional("fieldManager")
-	val fieldValidationLens = Query.string().optional("fieldValidation")
-	val prettyLens = Query.string().optional("pretty")
+    val iok8sapiauthorizationv1SelfSubjectAccessReviewLens =
+        Body.auto<SelfSubjectAccessReview>().toLens()
+    val dryRunLens = Query.string().optional("dryRun")
+    val fieldManagerLens = Query.string().optional("fieldManager")
+    val fieldValidationLens = Query.string().optional("fieldValidation")
+    val prettyLens = Query.string().optional("pretty")
 
-	return "/apis/authorization.k8s.io/v1/selfsubjectaccessreviews" bind Method.POST to { req: Request ->
-		val dryRun = dryRunLens(req)
-		val fieldManager = fieldManagerLens(req)
-		val fieldValidation = fieldValidationLens(req)
-		val pretty = prettyLens(req)
-		val iok8sapiauthorizationv1SelfSubjectAccessReview = iok8sapiauthorizationv1SelfSubjectAccessReviewLens(req)
-		Response(Status.OK)
-			.with(iok8sapiauthorizationv1SelfSubjectAccessReviewLens of TODO())
-	}
+    return "/apis/authorization.k8s.io/v1/selfsubjectaccessreviews" bind Method.POST to { req: Request ->
+        val dryRun = dryRunLens(req)
+        val fieldManager = fieldManagerLens(req)
+        val fieldValidation = fieldValidationLens(req)
+        val pretty = prettyLens(req)
+        val iok8sapiauthorizationv1SelfSubjectAccessReview = iok8sapiauthorizationv1SelfSubjectAccessReviewLens(req)
+        Response(Status.OK)
+            .with(iok8sapiauthorizationv1SelfSubjectAccessReviewLens of TODO())
+    }
 }

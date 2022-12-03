@@ -19,10 +19,10 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun GetApiextensionsAPIGroup(): RoutingHttpHandler {
-	val iok8sapimachinerypkgapismetav1APIGroupLens = Body.auto<APIGroup>().toLens()
+    val iok8sapimachinerypkgapismetav1APIGroupLens = Body.auto<APIGroup>().toLens()
 
-	return "/apis/apiextensions.k8s.io/" bind Method.GET to { req: Request ->
-		Response(Status.OK)
-			.with(iok8sapimachinerypkgapismetav1APIGroupLens of TODO())
-	}
+    return "/apis/apiextensions.k8s.io/" bind Method.GET to { req: Request ->
+        Response(Status.OK)
+            .with(iok8sapimachinerypkgapismetav1APIGroupLens of TODO())
+    }
 }

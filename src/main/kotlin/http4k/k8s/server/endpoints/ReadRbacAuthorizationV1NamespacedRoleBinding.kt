@@ -22,16 +22,16 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReadRbacAuthorizationV1NamespacedRoleBinding(): RoutingHttpHandler {
-	val iok8sapirbacv1RoleBindingLens = Body.auto<RoleBinding>().toLens()
-	val nameLens = Path.string().of("name")
-	val namespaceLens = Path.string().of("namespace")
-	val prettyLens = Query.string().optional("pretty")
+    val iok8sapirbacv1RoleBindingLens = Body.auto<RoleBinding>().toLens()
+    val nameLens = Path.string().of("name")
+    val namespaceLens = Path.string().of("namespace")
+    val prettyLens = Query.string().optional("pretty")
 
-	return "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}" bind Method.GET to { req: Request ->
-		val name = nameLens(req)
-		val namespace = namespaceLens(req)
-		val pretty = prettyLens(req)
-		Response(Status.OK)
-			.with(iok8sapirbacv1RoleBindingLens of TODO())
-	}
+    return "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}" bind Method.GET to { req: Request ->
+        val name = nameLens(req)
+        val namespace = namespaceLens(req)
+        val pretty = prettyLens(req)
+        Response(Status.OK)
+            .with(iok8sapirbacv1RoleBindingLens of TODO())
+    }
 }

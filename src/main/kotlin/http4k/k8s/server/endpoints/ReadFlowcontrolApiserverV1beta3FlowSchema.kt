@@ -22,14 +22,14 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReadFlowcontrolApiserverV1beta3FlowSchema(): RoutingHttpHandler {
-	val iok8sapiflowcontrolv1beta3FlowSchemaLens = Body.auto<FlowSchema>().toLens()
-	val nameLens = Path.string().of("name")
-	val prettyLens = Query.string().optional("pretty")
+    val iok8sapiflowcontrolv1beta3FlowSchemaLens = Body.auto<FlowSchema>().toLens()
+    val nameLens = Path.string().of("name")
+    val prettyLens = Query.string().optional("pretty")
 
-	return "/apis/flowcontrol.apiserver.k8s.io/v1beta3/flowschemas/{name}" bind Method.GET to { req: Request ->
-		val name = nameLens(req)
-		val pretty = prettyLens(req)
-		Response(Status.OK)
-			.with(iok8sapiflowcontrolv1beta3FlowSchemaLens of TODO())
-	}
+    return "/apis/flowcontrol.apiserver.k8s.io/v1beta3/flowschemas/{name}" bind Method.GET to { req: Request ->
+        val name = nameLens(req)
+        val pretty = prettyLens(req)
+        Response(Status.OK)
+            .with(iok8sapiflowcontrolv1beta3FlowSchemaLens of TODO())
+    }
 }

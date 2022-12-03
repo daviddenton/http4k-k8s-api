@@ -17,7 +17,7 @@ import org.http4k.routing.bind
 /**
  * replace the specified APIService
  * Request:
- * 	* / * 
+ * 	* / *
  * Response:
  * 	application/json
  * 		200 OK
@@ -25,21 +25,22 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReplaceApiregistrationV1APIService(): RoutingHttpHandler {
-	val iok8skubeaggregatorpkgapisapiregistrationv1APIServiceLens = Body.auto<APIService>().toLens()
-	val nameLens = Path.string().of("name")
-	val prettyLens = Query.string().optional("pretty")
-	val dryRunLens = Query.string().optional("dryRun")
-	val fieldManagerLens = Query.string().optional("fieldManager")
-	val fieldValidationLens = Query.string().optional("fieldValidation")
+    val iok8skubeaggregatorpkgapisapiregistrationv1APIServiceLens = Body.auto<APIService>().toLens()
+    val nameLens = Path.string().of("name")
+    val prettyLens = Query.string().optional("pretty")
+    val dryRunLens = Query.string().optional("dryRun")
+    val fieldManagerLens = Query.string().optional("fieldManager")
+    val fieldValidationLens = Query.string().optional("fieldValidation")
 
-	return "/apis/apiregistration.k8s.io/v1/apiservices/{name}" bind Method.PUT to { req: Request ->
-		val name = nameLens(req)
-		val pretty = prettyLens(req)
-		val dryRun = dryRunLens(req)
-		val fieldManager = fieldManagerLens(req)
-		val fieldValidation = fieldValidationLens(req)
-		val iok8skubeaggregatorpkgapisapiregistrationv1APIService = iok8skubeaggregatorpkgapisapiregistrationv1APIServiceLens(req)
-		Response(Status.OK)
-			.with(iok8skubeaggregatorpkgapisapiregistrationv1APIServiceLens of TODO())
-	}
+    return "/apis/apiregistration.k8s.io/v1/apiservices/{name}" bind Method.PUT to { req: Request ->
+        val name = nameLens(req)
+        val pretty = prettyLens(req)
+        val dryRun = dryRunLens(req)
+        val fieldManager = fieldManagerLens(req)
+        val fieldValidation = fieldValidationLens(req)
+        val iok8skubeaggregatorpkgapisapiregistrationv1APIService =
+            iok8skubeaggregatorpkgapisapiregistrationv1APIServiceLens(req)
+        Response(Status.OK)
+            .with(iok8skubeaggregatorpkgapisapiregistrationv1APIServiceLens of TODO())
+    }
 }

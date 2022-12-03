@@ -17,7 +17,7 @@ import org.http4k.routing.bind
 /**
  * create an EndpointSlice
  * Request:
- * 	* / * 
+ * 	* / *
  * Response:
  * 	application/json
  * 		200 OK
@@ -26,21 +26,21 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun CreateDiscoveryV1NamespacedEndpointSlice(): RoutingHttpHandler {
-	val iok8sapidiscoveryv1EndpointSliceLens = Body.auto<EndpointSlice>().toLens()
-	val namespaceLens = Path.string().of("namespace")
-	val prettyLens = Query.string().optional("pretty")
-	val dryRunLens = Query.string().optional("dryRun")
-	val fieldManagerLens = Query.string().optional("fieldManager")
-	val fieldValidationLens = Query.string().optional("fieldValidation")
+    val iok8sapidiscoveryv1EndpointSliceLens = Body.auto<EndpointSlice>().toLens()
+    val namespaceLens = Path.string().of("namespace")
+    val prettyLens = Query.string().optional("pretty")
+    val dryRunLens = Query.string().optional("dryRun")
+    val fieldManagerLens = Query.string().optional("fieldManager")
+    val fieldValidationLens = Query.string().optional("fieldValidation")
 
-	return "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices" bind Method.POST to { req: Request ->
-		val namespace = namespaceLens(req)
-		val pretty = prettyLens(req)
-		val dryRun = dryRunLens(req)
-		val fieldManager = fieldManagerLens(req)
-		val fieldValidation = fieldValidationLens(req)
-		val iok8sapidiscoveryv1EndpointSlice = iok8sapidiscoveryv1EndpointSliceLens(req)
-		Response(Status.OK)
-			.with(iok8sapidiscoveryv1EndpointSliceLens of TODO())
-	}
+    return "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices" bind Method.POST to { req: Request ->
+        val namespace = namespaceLens(req)
+        val pretty = prettyLens(req)
+        val dryRun = dryRunLens(req)
+        val fieldManager = fieldManagerLens(req)
+        val fieldValidation = fieldValidationLens(req)
+        val iok8sapidiscoveryv1EndpointSlice = iok8sapidiscoveryv1EndpointSliceLens(req)
+        Response(Status.OK)
+            .with(iok8sapidiscoveryv1EndpointSliceLens of TODO())
+    }
 }

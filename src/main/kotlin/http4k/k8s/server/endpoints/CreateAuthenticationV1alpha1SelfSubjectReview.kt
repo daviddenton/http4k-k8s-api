@@ -16,7 +16,7 @@ import org.http4k.routing.bind
 /**
  * create a SelfSubjectReview
  * Request:
- * 	* / * 
+ * 	* / *
  * Response:
  * 	application/json
  * 		200 OK
@@ -25,19 +25,19 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun CreateAuthenticationV1alpha1SelfSubjectReview(): RoutingHttpHandler {
-	val iok8sapiauthenticationv1alpha1SelfSubjectReviewLens = Body.auto<SelfSubjectReview>().toLens()
-	val dryRunLens = Query.string().optional("dryRun")
-	val fieldManagerLens = Query.string().optional("fieldManager")
-	val fieldValidationLens = Query.string().optional("fieldValidation")
-	val prettyLens = Query.string().optional("pretty")
+    val iok8sapiauthenticationv1alpha1SelfSubjectReviewLens = Body.auto<SelfSubjectReview>().toLens()
+    val dryRunLens = Query.string().optional("dryRun")
+    val fieldManagerLens = Query.string().optional("fieldManager")
+    val fieldValidationLens = Query.string().optional("fieldValidation")
+    val prettyLens = Query.string().optional("pretty")
 
-	return "/apis/authentication.k8s.io/v1alpha1/selfsubjectreviews" bind Method.POST to { req: Request ->
-		val dryRun = dryRunLens(req)
-		val fieldManager = fieldManagerLens(req)
-		val fieldValidation = fieldValidationLens(req)
-		val pretty = prettyLens(req)
-		val iok8sapiauthenticationv1alpha1SelfSubjectReview = iok8sapiauthenticationv1alpha1SelfSubjectReviewLens(req)
-		Response(Status.OK)
-			.with(iok8sapiauthenticationv1alpha1SelfSubjectReviewLens of TODO())
-	}
+    return "/apis/authentication.k8s.io/v1alpha1/selfsubjectreviews" bind Method.POST to { req: Request ->
+        val dryRun = dryRunLens(req)
+        val fieldManager = fieldManagerLens(req)
+        val fieldValidation = fieldValidationLens(req)
+        val pretty = prettyLens(req)
+        val iok8sapiauthenticationv1alpha1SelfSubjectReview = iok8sapiauthenticationv1alpha1SelfSubjectReviewLens(req)
+        Response(Status.OK)
+            .with(iok8sapiauthenticationv1alpha1SelfSubjectReviewLens of TODO())
+    }
 }

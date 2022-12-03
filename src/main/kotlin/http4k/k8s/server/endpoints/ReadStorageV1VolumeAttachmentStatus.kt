@@ -22,14 +22,14 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReadStorageV1VolumeAttachmentStatus(): RoutingHttpHandler {
-	val iok8sapistoragev1VolumeAttachmentLens = Body.auto<VolumeAttachment>().toLens()
-	val nameLens = Path.string().of("name")
-	val prettyLens = Query.string().optional("pretty")
+    val iok8sapistoragev1VolumeAttachmentLens = Body.auto<VolumeAttachment>().toLens()
+    val nameLens = Path.string().of("name")
+    val prettyLens = Query.string().optional("pretty")
 
-	return "/apis/storage.k8s.io/v1/volumeattachments/{name}/status" bind Method.GET to { req: Request ->
-		val name = nameLens(req)
-		val pretty = prettyLens(req)
-		Response(Status.OK)
-			.with(iok8sapistoragev1VolumeAttachmentLens of TODO())
-	}
+    return "/apis/storage.k8s.io/v1/volumeattachments/{name}/status" bind Method.GET to { req: Request ->
+        val name = nameLens(req)
+        val pretty = prettyLens(req)
+        Response(Status.OK)
+            .with(iok8sapistoragev1VolumeAttachmentLens of TODO())
+    }
 }

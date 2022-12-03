@@ -19,10 +19,10 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun GetCodeVersion(): RoutingHttpHandler {
-	val iok8sapimachinerypkgversionInfoLens = Body.auto<Info>().toLens()
+    val iok8sapimachinerypkgversionInfoLens = Body.auto<Info>().toLens()
 
-	return "/version/" bind Method.GET to { req: Request ->
-		Response(Status.OK)
-			.with(iok8sapimachinerypkgversionInfoLens of TODO())
-	}
+    return "/version/" bind Method.GET to { req: Request ->
+        Response(Status.OK)
+            .with(iok8sapimachinerypkgversionInfoLens of TODO())
+    }
 }

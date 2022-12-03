@@ -16,7 +16,7 @@ import org.http4k.routing.bind
 /**
  * create a ClusterCIDR
  * Request:
- * 	* / * 
+ * 	* / *
  * Response:
  * 	application/json
  * 		200 OK
@@ -25,19 +25,19 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun CreateNetworkingV1alpha1ClusterCIDR(): RoutingHttpHandler {
-	val iok8sapinetworkingv1alpha1ClusterCIDRLens = Body.auto<ClusterCIDR>().toLens()
-	val prettyLens = Query.string().optional("pretty")
-	val dryRunLens = Query.string().optional("dryRun")
-	val fieldManagerLens = Query.string().optional("fieldManager")
-	val fieldValidationLens = Query.string().optional("fieldValidation")
+    val iok8sapinetworkingv1alpha1ClusterCIDRLens = Body.auto<ClusterCIDR>().toLens()
+    val prettyLens = Query.string().optional("pretty")
+    val dryRunLens = Query.string().optional("dryRun")
+    val fieldManagerLens = Query.string().optional("fieldManager")
+    val fieldValidationLens = Query.string().optional("fieldValidation")
 
-	return "/apis/networking.k8s.io/v1alpha1/clustercidrs" bind Method.POST to { req: Request ->
-		val pretty = prettyLens(req)
-		val dryRun = dryRunLens(req)
-		val fieldManager = fieldManagerLens(req)
-		val fieldValidation = fieldValidationLens(req)
-		val iok8sapinetworkingv1alpha1ClusterCIDR = iok8sapinetworkingv1alpha1ClusterCIDRLens(req)
-		Response(Status.OK)
-			.with(iok8sapinetworkingv1alpha1ClusterCIDRLens of TODO())
-	}
+    return "/apis/networking.k8s.io/v1alpha1/clustercidrs" bind Method.POST to { req: Request ->
+        val pretty = prettyLens(req)
+        val dryRun = dryRunLens(req)
+        val fieldManager = fieldManagerLens(req)
+        val fieldValidation = fieldValidationLens(req)
+        val iok8sapinetworkingv1alpha1ClusterCIDR = iok8sapinetworkingv1alpha1ClusterCIDRLens(req)
+        Response(Status.OK)
+            .with(iok8sapinetworkingv1alpha1ClusterCIDRLens of TODO())
+    }
 }

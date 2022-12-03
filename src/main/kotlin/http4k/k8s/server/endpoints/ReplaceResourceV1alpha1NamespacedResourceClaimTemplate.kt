@@ -17,7 +17,7 @@ import org.http4k.routing.bind
 /**
  * replace the specified ResourceClaimTemplate
  * Request:
- * 	* / * 
+ * 	* / *
  * Response:
  * 	application/json
  * 		200 OK
@@ -25,23 +25,23 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReplaceResourceV1alpha1NamespacedResourceClaimTemplate(): RoutingHttpHandler {
-	val iok8sapiresourcev1alpha1ResourceClaimTemplateLens = Body.auto<ResourceClaimTemplate>().toLens()
-	val nameLens = Path.string().of("name")
-	val namespaceLens = Path.string().of("namespace")
-	val prettyLens = Query.string().optional("pretty")
-	val dryRunLens = Query.string().optional("dryRun")
-	val fieldManagerLens = Query.string().optional("fieldManager")
-	val fieldValidationLens = Query.string().optional("fieldValidation")
+    val iok8sapiresourcev1alpha1ResourceClaimTemplateLens = Body.auto<ResourceClaimTemplate>().toLens()
+    val nameLens = Path.string().of("name")
+    val namespaceLens = Path.string().of("namespace")
+    val prettyLens = Query.string().optional("pretty")
+    val dryRunLens = Query.string().optional("dryRun")
+    val fieldManagerLens = Query.string().optional("fieldManager")
+    val fieldValidationLens = Query.string().optional("fieldValidation")
 
-	return "/apis/resource.k8s.io/v1alpha1/namespaces/{namespace}/resourceclaimtemplates/{name}" bind Method.PUT to { req: Request ->
-		val name = nameLens(req)
-		val namespace = namespaceLens(req)
-		val pretty = prettyLens(req)
-		val dryRun = dryRunLens(req)
-		val fieldManager = fieldManagerLens(req)
-		val fieldValidation = fieldValidationLens(req)
-		val iok8sapiresourcev1alpha1ResourceClaimTemplate = iok8sapiresourcev1alpha1ResourceClaimTemplateLens(req)
-		Response(Status.OK)
-			.with(iok8sapiresourcev1alpha1ResourceClaimTemplateLens of TODO())
-	}
+    return "/apis/resource.k8s.io/v1alpha1/namespaces/{namespace}/resourceclaimtemplates/{name}" bind Method.PUT to { req: Request ->
+        val name = nameLens(req)
+        val namespace = namespaceLens(req)
+        val pretty = prettyLens(req)
+        val dryRun = dryRunLens(req)
+        val fieldManager = fieldManagerLens(req)
+        val fieldValidation = fieldValidationLens(req)
+        val iok8sapiresourcev1alpha1ResourceClaimTemplate = iok8sapiresourcev1alpha1ResourceClaimTemplateLens(req)
+        Response(Status.OK)
+            .with(iok8sapiresourcev1alpha1ResourceClaimTemplateLens of TODO())
+    }
 }

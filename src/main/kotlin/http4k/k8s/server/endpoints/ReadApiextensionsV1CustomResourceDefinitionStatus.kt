@@ -22,15 +22,15 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReadApiextensionsV1CustomResourceDefinitionStatus(): RoutingHttpHandler {
-	val iok8sapiextensionsapiserverpkgapisapiextensionsv1CustomResourceDefinitionLens =
-			Body.auto<CustomResourceDefinition>().toLens()
-	val nameLens = Path.string().of("name")
-	val prettyLens = Query.string().optional("pretty")
+    val iok8sapiextensionsapiserverpkgapisapiextensionsv1CustomResourceDefinitionLens =
+        Body.auto<CustomResourceDefinition>().toLens()
+    val nameLens = Path.string().of("name")
+    val prettyLens = Query.string().optional("pretty")
 
-	return "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status" bind Method.GET to { req: Request ->
-		val name = nameLens(req)
-		val pretty = prettyLens(req)
-		Response(Status.OK)
-			.with(iok8sapiextensionsapiserverpkgapisapiextensionsv1CustomResourceDefinitionLens of TODO())
-	}
+    return "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status" bind Method.GET to { req: Request ->
+        val name = nameLens(req)
+        val pretty = prettyLens(req)
+        Response(Status.OK)
+            .with(iok8sapiextensionsapiserverpkgapisapiextensionsv1CustomResourceDefinitionLens of TODO())
+    }
 }

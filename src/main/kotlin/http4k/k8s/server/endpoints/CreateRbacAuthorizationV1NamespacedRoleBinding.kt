@@ -17,7 +17,7 @@ import org.http4k.routing.bind
 /**
  * create a RoleBinding
  * Request:
- * 	* / * 
+ * 	* / *
  * Response:
  * 	application/json
  * 		200 OK
@@ -26,21 +26,21 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun CreateRbacAuthorizationV1NamespacedRoleBinding(): RoutingHttpHandler {
-	val iok8sapirbacv1RoleBindingLens = Body.auto<RoleBinding>().toLens()
-	val namespaceLens = Path.string().of("namespace")
-	val prettyLens = Query.string().optional("pretty")
-	val dryRunLens = Query.string().optional("dryRun")
-	val fieldManagerLens = Query.string().optional("fieldManager")
-	val fieldValidationLens = Query.string().optional("fieldValidation")
+    val iok8sapirbacv1RoleBindingLens = Body.auto<RoleBinding>().toLens()
+    val namespaceLens = Path.string().of("namespace")
+    val prettyLens = Query.string().optional("pretty")
+    val dryRunLens = Query.string().optional("dryRun")
+    val fieldManagerLens = Query.string().optional("fieldManager")
+    val fieldValidationLens = Query.string().optional("fieldValidation")
 
-	return "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings" bind Method.POST to { req: Request ->
-		val namespace = namespaceLens(req)
-		val pretty = prettyLens(req)
-		val dryRun = dryRunLens(req)
-		val fieldManager = fieldManagerLens(req)
-		val fieldValidation = fieldValidationLens(req)
-		val iok8sapirbacv1RoleBinding = iok8sapirbacv1RoleBindingLens(req)
-		Response(Status.OK)
-			.with(iok8sapirbacv1RoleBindingLens of TODO())
-	}
+    return "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings" bind Method.POST to { req: Request ->
+        val namespace = namespaceLens(req)
+        val pretty = prettyLens(req)
+        val dryRun = dryRunLens(req)
+        val fieldManager = fieldManagerLens(req)
+        val fieldValidation = fieldValidationLens(req)
+        val iok8sapirbacv1RoleBinding = iok8sapirbacv1RoleBindingLens(req)
+        Response(Status.OK)
+            .with(iok8sapirbacv1RoleBindingLens of TODO())
+    }
 }

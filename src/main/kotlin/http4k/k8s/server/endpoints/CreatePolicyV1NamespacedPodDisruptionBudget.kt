@@ -17,7 +17,7 @@ import org.http4k.routing.bind
 /**
  * create a PodDisruptionBudget
  * Request:
- * 	* / * 
+ * 	* / *
  * Response:
  * 	application/json
  * 		200 OK
@@ -26,21 +26,21 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun CreatePolicyV1NamespacedPodDisruptionBudget(): RoutingHttpHandler {
-	val iok8sapipolicyv1PodDisruptionBudgetLens = Body.auto<PodDisruptionBudget>().toLens()
-	val namespaceLens = Path.string().of("namespace")
-	val prettyLens = Query.string().optional("pretty")
-	val dryRunLens = Query.string().optional("dryRun")
-	val fieldManagerLens = Query.string().optional("fieldManager")
-	val fieldValidationLens = Query.string().optional("fieldValidation")
+    val iok8sapipolicyv1PodDisruptionBudgetLens = Body.auto<PodDisruptionBudget>().toLens()
+    val namespaceLens = Path.string().of("namespace")
+    val prettyLens = Query.string().optional("pretty")
+    val dryRunLens = Query.string().optional("dryRun")
+    val fieldManagerLens = Query.string().optional("fieldManager")
+    val fieldValidationLens = Query.string().optional("fieldValidation")
 
-	return "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets" bind Method.POST to { req: Request ->
-		val namespace = namespaceLens(req)
-		val pretty = prettyLens(req)
-		val dryRun = dryRunLens(req)
-		val fieldManager = fieldManagerLens(req)
-		val fieldValidation = fieldValidationLens(req)
-		val iok8sapipolicyv1PodDisruptionBudget = iok8sapipolicyv1PodDisruptionBudgetLens(req)
-		Response(Status.OK)
-			.with(iok8sapipolicyv1PodDisruptionBudgetLens of TODO())
-	}
+    return "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets" bind Method.POST to { req: Request ->
+        val namespace = namespaceLens(req)
+        val pretty = prettyLens(req)
+        val dryRun = dryRunLens(req)
+        val fieldManager = fieldManagerLens(req)
+        val fieldValidation = fieldValidationLens(req)
+        val iok8sapipolicyv1PodDisruptionBudget = iok8sapipolicyv1PodDisruptionBudgetLens(req)
+        Response(Status.OK)
+            .with(iok8sapipolicyv1PodDisruptionBudgetLens of TODO())
+    }
 }

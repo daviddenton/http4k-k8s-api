@@ -22,16 +22,16 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReadNetworkingV1NamespacedIngress(): RoutingHttpHandler {
-	val iok8sapinetworkingv1IngressLens = Body.auto<Ingress>().toLens()
-	val nameLens = Path.string().of("name")
-	val namespaceLens = Path.string().of("namespace")
-	val prettyLens = Query.string().optional("pretty")
+    val iok8sapinetworkingv1IngressLens = Body.auto<Ingress>().toLens()
+    val nameLens = Path.string().of("name")
+    val namespaceLens = Path.string().of("namespace")
+    val prettyLens = Query.string().optional("pretty")
 
-	return "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}" bind Method.GET to { req: Request ->
-		val name = nameLens(req)
-		val namespace = namespaceLens(req)
-		val pretty = prettyLens(req)
-		Response(Status.OK)
-			.with(iok8sapinetworkingv1IngressLens of TODO())
-	}
+    return "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}" bind Method.GET to { req: Request ->
+        val name = nameLens(req)
+        val namespace = namespaceLens(req)
+        val pretty = prettyLens(req)
+        Response(Status.OK)
+            .with(iok8sapinetworkingv1IngressLens of TODO())
+    }
 }

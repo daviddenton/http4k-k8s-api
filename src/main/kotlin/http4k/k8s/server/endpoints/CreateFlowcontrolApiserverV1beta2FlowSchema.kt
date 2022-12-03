@@ -16,7 +16,7 @@ import org.http4k.routing.bind
 /**
  * create a FlowSchema
  * Request:
- * 	* / * 
+ * 	* / *
  * Response:
  * 	application/json
  * 		200 OK
@@ -25,19 +25,19 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun CreateFlowcontrolApiserverV1beta2FlowSchema(): RoutingHttpHandler {
-	val iok8sapiflowcontrolv1beta2FlowSchemaLens = Body.auto<FlowSchema>().toLens()
-	val prettyLens = Query.string().optional("pretty")
-	val dryRunLens = Query.string().optional("dryRun")
-	val fieldManagerLens = Query.string().optional("fieldManager")
-	val fieldValidationLens = Query.string().optional("fieldValidation")
+    val iok8sapiflowcontrolv1beta2FlowSchemaLens = Body.auto<FlowSchema>().toLens()
+    val prettyLens = Query.string().optional("pretty")
+    val dryRunLens = Query.string().optional("dryRun")
+    val fieldManagerLens = Query.string().optional("fieldManager")
+    val fieldValidationLens = Query.string().optional("fieldValidation")
 
-	return "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas" bind Method.POST to { req: Request ->
-		val pretty = prettyLens(req)
-		val dryRun = dryRunLens(req)
-		val fieldManager = fieldManagerLens(req)
-		val fieldValidation = fieldValidationLens(req)
-		val iok8sapiflowcontrolv1beta2FlowSchema = iok8sapiflowcontrolv1beta2FlowSchemaLens(req)
-		Response(Status.OK)
-			.with(iok8sapiflowcontrolv1beta2FlowSchemaLens of TODO())
-	}
+    return "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas" bind Method.POST to { req: Request ->
+        val pretty = prettyLens(req)
+        val dryRun = dryRunLens(req)
+        val fieldManager = fieldManagerLens(req)
+        val fieldValidation = fieldValidationLens(req)
+        val iok8sapiflowcontrolv1beta2FlowSchema = iok8sapiflowcontrolv1beta2FlowSchemaLens(req)
+        Response(Status.OK)
+            .with(iok8sapiflowcontrolv1beta2FlowSchemaLens of TODO())
+    }
 }

@@ -17,7 +17,7 @@ import org.http4k.routing.bind
 /**
  * replace finalize of the specified Namespace
  * Request:
- * 	* / * 
+ * 	* / *
  * Response:
  * 	application/json
  * 		200 OK
@@ -25,21 +25,21 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReplaceCoreV1NamespaceFinalize(): RoutingHttpHandler {
-	val iok8sapicorev1NamespaceLens = Body.auto<Namespace>().toLens()
-	val dryRunLens = Query.string().optional("dryRun")
-	val fieldManagerLens = Query.string().optional("fieldManager")
-	val fieldValidationLens = Query.string().optional("fieldValidation")
-	val nameLens = Path.string().of("name")
-	val prettyLens = Query.string().optional("pretty")
+    val iok8sapicorev1NamespaceLens = Body.auto<Namespace>().toLens()
+    val dryRunLens = Query.string().optional("dryRun")
+    val fieldManagerLens = Query.string().optional("fieldManager")
+    val fieldValidationLens = Query.string().optional("fieldValidation")
+    val nameLens = Path.string().of("name")
+    val prettyLens = Query.string().optional("pretty")
 
-	return "/api/v1/namespaces/{name}/finalize" bind Method.PUT to { req: Request ->
-		val dryRun = dryRunLens(req)
-		val fieldManager = fieldManagerLens(req)
-		val fieldValidation = fieldValidationLens(req)
-		val name = nameLens(req)
-		val pretty = prettyLens(req)
-		val iok8sapicorev1Namespace = iok8sapicorev1NamespaceLens(req)
-		Response(Status.OK)
-			.with(iok8sapicorev1NamespaceLens of TODO())
-	}
+    return "/api/v1/namespaces/{name}/finalize" bind Method.PUT to { req: Request ->
+        val dryRun = dryRunLens(req)
+        val fieldManager = fieldManagerLens(req)
+        val fieldValidation = fieldValidationLens(req)
+        val name = nameLens(req)
+        val pretty = prettyLens(req)
+        val iok8sapicorev1Namespace = iok8sapicorev1NamespaceLens(req)
+        Response(Status.OK)
+            .with(iok8sapicorev1NamespaceLens of TODO())
+    }
 }

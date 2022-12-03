@@ -17,7 +17,7 @@ import org.http4k.routing.bind
 /**
  * create a ControllerRevision
  * Request:
- * 	* / * 
+ * 	* / *
  * Response:
  * 	application/json
  * 		200 OK
@@ -26,21 +26,21 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun CreateAppsV1NamespacedControllerRevision(): RoutingHttpHandler {
-	val iok8sapiappsv1ControllerRevisionLens = Body.auto<ControllerRevision>().toLens()
-	val namespaceLens = Path.string().of("namespace")
-	val prettyLens = Query.string().optional("pretty")
-	val dryRunLens = Query.string().optional("dryRun")
-	val fieldManagerLens = Query.string().optional("fieldManager")
-	val fieldValidationLens = Query.string().optional("fieldValidation")
+    val iok8sapiappsv1ControllerRevisionLens = Body.auto<ControllerRevision>().toLens()
+    val namespaceLens = Path.string().of("namespace")
+    val prettyLens = Query.string().optional("pretty")
+    val dryRunLens = Query.string().optional("dryRun")
+    val fieldManagerLens = Query.string().optional("fieldManager")
+    val fieldValidationLens = Query.string().optional("fieldValidation")
 
-	return "/apis/apps/v1/namespaces/{namespace}/controllerrevisions" bind Method.POST to { req: Request ->
-		val namespace = namespaceLens(req)
-		val pretty = prettyLens(req)
-		val dryRun = dryRunLens(req)
-		val fieldManager = fieldManagerLens(req)
-		val fieldValidation = fieldValidationLens(req)
-		val iok8sapiappsv1ControllerRevision = iok8sapiappsv1ControllerRevisionLens(req)
-		Response(Status.OK)
-			.with(iok8sapiappsv1ControllerRevisionLens of TODO())
-	}
+    return "/apis/apps/v1/namespaces/{namespace}/controllerrevisions" bind Method.POST to { req: Request ->
+        val namespace = namespaceLens(req)
+        val pretty = prettyLens(req)
+        val dryRun = dryRunLens(req)
+        val fieldManager = fieldManagerLens(req)
+        val fieldValidation = fieldValidationLens(req)
+        val iok8sapiappsv1ControllerRevision = iok8sapiappsv1ControllerRevisionLens(req)
+        Response(Status.OK)
+            .with(iok8sapiappsv1ControllerRevisionLens of TODO())
+    }
 }

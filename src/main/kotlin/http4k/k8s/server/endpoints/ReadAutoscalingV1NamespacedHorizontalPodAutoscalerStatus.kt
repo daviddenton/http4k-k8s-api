@@ -22,17 +22,17 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(): RoutingHttpHandler {
-	val iok8sapiautoscalingv1HorizontalPodAutoscalerLens =
-			Body.auto<HorizontalPodAutoscaler>().toLens()
-	val nameLens = Path.string().of("name")
-	val namespaceLens = Path.string().of("namespace")
-	val prettyLens = Query.string().optional("pretty")
+    val iok8sapiautoscalingv1HorizontalPodAutoscalerLens =
+        Body.auto<HorizontalPodAutoscaler>().toLens()
+    val nameLens = Path.string().of("name")
+    val namespaceLens = Path.string().of("namespace")
+    val prettyLens = Query.string().optional("pretty")
 
-	return "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status" bind Method.GET to { req: Request ->
-		val name = nameLens(req)
-		val namespace = namespaceLens(req)
-		val pretty = prettyLens(req)
-		Response(Status.OK)
-			.with(iok8sapiautoscalingv1HorizontalPodAutoscalerLens of TODO())
-	}
+    return "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status" bind Method.GET to { req: Request ->
+        val name = nameLens(req)
+        val namespace = namespaceLens(req)
+        val pretty = prettyLens(req)
+        Response(Status.OK)
+            .with(iok8sapiautoscalingv1HorizontalPodAutoscalerLens of TODO())
+    }
 }

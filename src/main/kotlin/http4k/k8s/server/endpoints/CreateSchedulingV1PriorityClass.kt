@@ -16,7 +16,7 @@ import org.http4k.routing.bind
 /**
  * create a PriorityClass
  * Request:
- * 	* / * 
+ * 	* / *
  * Response:
  * 	application/json
  * 		200 OK
@@ -25,19 +25,19 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun CreateSchedulingV1PriorityClass(): RoutingHttpHandler {
-	val iok8sapischedulingv1PriorityClassLens = Body.auto<PriorityClass>().toLens()
-	val prettyLens = Query.string().optional("pretty")
-	val dryRunLens = Query.string().optional("dryRun")
-	val fieldManagerLens = Query.string().optional("fieldManager")
-	val fieldValidationLens = Query.string().optional("fieldValidation")
+    val iok8sapischedulingv1PriorityClassLens = Body.auto<PriorityClass>().toLens()
+    val prettyLens = Query.string().optional("pretty")
+    val dryRunLens = Query.string().optional("dryRun")
+    val fieldManagerLens = Query.string().optional("fieldManager")
+    val fieldValidationLens = Query.string().optional("fieldValidation")
 
-	return "/apis/scheduling.k8s.io/v1/priorityclasses" bind Method.POST to { req: Request ->
-		val pretty = prettyLens(req)
-		val dryRun = dryRunLens(req)
-		val fieldManager = fieldManagerLens(req)
-		val fieldValidation = fieldValidationLens(req)
-		val iok8sapischedulingv1PriorityClass = iok8sapischedulingv1PriorityClassLens(req)
-		Response(Status.OK)
-			.with(iok8sapischedulingv1PriorityClassLens of TODO())
-	}
+    return "/apis/scheduling.k8s.io/v1/priorityclasses" bind Method.POST to { req: Request ->
+        val pretty = prettyLens(req)
+        val dryRun = dryRunLens(req)
+        val fieldManager = fieldManagerLens(req)
+        val fieldValidation = fieldValidationLens(req)
+        val iok8sapischedulingv1PriorityClass = iok8sapischedulingv1PriorityClassLens(req)
+        Response(Status.OK)
+            .with(iok8sapischedulingv1PriorityClassLens of TODO())
+    }
 }

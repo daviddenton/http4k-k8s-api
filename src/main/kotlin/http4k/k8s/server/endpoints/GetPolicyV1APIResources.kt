@@ -19,10 +19,10 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun GetPolicyV1APIResources(): RoutingHttpHandler {
-	val iok8sapimachinerypkgapismetav1APIResourceListLens = Body.auto<APIResourceList>().toLens()
+    val iok8sapimachinerypkgapismetav1APIResourceListLens = Body.auto<APIResourceList>().toLens()
 
-	return "/apis/policy/v1/" bind Method.GET to { req: Request ->
-		Response(Status.OK)
-			.with(iok8sapimachinerypkgapismetav1APIResourceListLens of TODO())
-	}
+    return "/apis/policy/v1/" bind Method.GET to { req: Request ->
+        Response(Status.OK)
+            .with(iok8sapimachinerypkgapismetav1APIResourceListLens of TODO())
+    }
 }

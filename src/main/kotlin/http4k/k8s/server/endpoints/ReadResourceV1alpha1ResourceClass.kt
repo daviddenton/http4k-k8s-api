@@ -22,14 +22,14 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReadResourceV1alpha1ResourceClass(): RoutingHttpHandler {
-	val iok8sapiresourcev1alpha1ResourceClassLens = Body.auto<ResourceClass>().toLens()
-	val nameLens = Path.string().of("name")
-	val prettyLens = Query.string().optional("pretty")
+    val iok8sapiresourcev1alpha1ResourceClassLens = Body.auto<ResourceClass>().toLens()
+    val nameLens = Path.string().of("name")
+    val prettyLens = Query.string().optional("pretty")
 
-	return "/apis/resource.k8s.io/v1alpha1/resourceclasses/{name}" bind Method.GET to { req: Request ->
-		val name = nameLens(req)
-		val pretty = prettyLens(req)
-		Response(Status.OK)
-			.with(iok8sapiresourcev1alpha1ResourceClassLens of TODO())
-	}
+    return "/apis/resource.k8s.io/v1alpha1/resourceclasses/{name}" bind Method.GET to { req: Request ->
+        val name = nameLens(req)
+        val pretty = prettyLens(req)
+        Response(Status.OK)
+            .with(iok8sapiresourcev1alpha1ResourceClassLens of TODO())
+    }
 }

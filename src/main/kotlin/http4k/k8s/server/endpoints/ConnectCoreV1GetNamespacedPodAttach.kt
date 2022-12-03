@@ -1,6 +1,5 @@
 package http4k.k8s.server.endpoints
 
-import kotlin.String
 import org.http4k.core.Body
 import org.http4k.core.Method
 import org.http4k.core.Request
@@ -23,24 +22,24 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ConnectCoreV1GetNamespacedPodAttach(): RoutingHttpHandler {
-	val connectCoreV1GetNamespacedPodAttachResponse200Lens = Body.auto<String>().toLens()
-	val containerLens = Query.string().optional("container")
-	val nameLens = Path.string().of("name")
-	val namespaceLens = Path.string().of("namespace")
-	val stderrLens = Query.boolean().optional("stderr")
-	val stdinLens = Query.boolean().optional("stdin")
-	val stdoutLens = Query.boolean().optional("stdout")
-	val ttyLens = Query.boolean().optional("tty")
+    val connectCoreV1GetNamespacedPodAttachResponse200Lens = Body.auto<String>().toLens()
+    val containerLens = Query.string().optional("container")
+    val nameLens = Path.string().of("name")
+    val namespaceLens = Path.string().of("namespace")
+    val stderrLens = Query.boolean().optional("stderr")
+    val stdinLens = Query.boolean().optional("stdin")
+    val stdoutLens = Query.boolean().optional("stdout")
+    val ttyLens = Query.boolean().optional("tty")
 
-	return "/api/v1/namespaces/{namespace}/pods/{name}/attach" bind Method.GET to { req: Request ->
-		val container = containerLens(req)
-		val name = nameLens(req)
-		val namespace = namespaceLens(req)
-		val stderr = stderrLens(req)
-		val stdin = stdinLens(req)
-		val stdout = stdoutLens(req)
-		val tty = ttyLens(req)
-		Response(Status.OK)
-			.with(connectCoreV1GetNamespacedPodAttachResponse200Lens of TODO())
-	}
+    return "/api/v1/namespaces/{namespace}/pods/{name}/attach" bind Method.GET to { req: Request ->
+        val container = containerLens(req)
+        val name = nameLens(req)
+        val namespace = namespaceLens(req)
+        val stderr = stderrLens(req)
+        val stdin = stdinLens(req)
+        val stdout = stdoutLens(req)
+        val tty = ttyLens(req)
+        Response(Status.OK)
+            .with(connectCoreV1GetNamespacedPodAttachResponse200Lens of TODO())
+    }
 }

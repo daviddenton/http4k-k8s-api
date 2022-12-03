@@ -15,10 +15,10 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun LogFileHandler(): RoutingHttpHandler {
-	val logpathLens = Path.string().of("logpath")
+    val logpathLens = Path.string().of("logpath")
 
-	return "/logs/{logpath}" bind Method.GET to { req: Request ->
-		val logpath = logpathLens(req)
-		Response(Status.OK)
-	}
+    return "/logs/{logpath}" bind Method.GET to { req: Request ->
+        val logpath = logpathLens(req)
+        Response(Status.OK)
+    }
 }

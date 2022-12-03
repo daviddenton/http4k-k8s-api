@@ -1,6 +1,5 @@
 package http4k.k8s.server.endpoints
 
-import kotlin.String
 import org.http4k.core.Body
 import org.http4k.core.Method
 import org.http4k.core.Request
@@ -19,10 +18,10 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun GetServiceAccountIssuerOpenIDConfiguration(): RoutingHttpHandler {
-	val getServiceAccountIssuerOpenIDConfigurationJsonResponse200Lens = Body.auto<String>().toLens()
+    val getServiceAccountIssuerOpenIDConfigurationJsonResponse200Lens = Body.auto<String>().toLens()
 
-	return "/.well-known/openid-configuration/" bind Method.GET to { req: Request ->
-		Response(Status.OK)
-			.with(getServiceAccountIssuerOpenIDConfigurationJsonResponse200Lens of TODO())
-	}
+    return "/.well-known/openid-configuration/" bind Method.GET to { req: Request ->
+        Response(Status.OK)
+            .with(getServiceAccountIssuerOpenIDConfigurationJsonResponse200Lens of TODO())
+    }
 }

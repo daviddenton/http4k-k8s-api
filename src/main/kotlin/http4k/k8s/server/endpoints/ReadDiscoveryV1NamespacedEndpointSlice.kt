@@ -22,16 +22,16 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReadDiscoveryV1NamespacedEndpointSlice(): RoutingHttpHandler {
-	val iok8sapidiscoveryv1EndpointSliceLens = Body.auto<EndpointSlice>().toLens()
-	val nameLens = Path.string().of("name")
-	val namespaceLens = Path.string().of("namespace")
-	val prettyLens = Query.string().optional("pretty")
+    val iok8sapidiscoveryv1EndpointSliceLens = Body.auto<EndpointSlice>().toLens()
+    val nameLens = Path.string().of("name")
+    val namespaceLens = Path.string().of("namespace")
+    val prettyLens = Query.string().optional("pretty")
 
-	return "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}" bind Method.GET to { req: Request ->
-		val name = nameLens(req)
-		val namespace = namespaceLens(req)
-		val pretty = prettyLens(req)
-		Response(Status.OK)
-			.with(iok8sapidiscoveryv1EndpointSliceLens of TODO())
-	}
+    return "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}" bind Method.GET to { req: Request ->
+        val name = nameLens(req)
+        val namespace = namespaceLens(req)
+        val pretty = prettyLens(req)
+        Response(Status.OK)
+            .with(iok8sapidiscoveryv1EndpointSliceLens of TODO())
+    }
 }

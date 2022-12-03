@@ -22,14 +22,14 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReadRbacAuthorizationV1ClusterRoleBinding(): RoutingHttpHandler {
-	val iok8sapirbacv1ClusterRoleBindingLens = Body.auto<ClusterRoleBinding>().toLens()
-	val nameLens = Path.string().of("name")
-	val prettyLens = Query.string().optional("pretty")
+    val iok8sapirbacv1ClusterRoleBindingLens = Body.auto<ClusterRoleBinding>().toLens()
+    val nameLens = Path.string().of("name")
+    val prettyLens = Query.string().optional("pretty")
 
-	return "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}" bind Method.GET to { req: Request ->
-		val name = nameLens(req)
-		val pretty = prettyLens(req)
-		Response(Status.OK)
-			.with(iok8sapirbacv1ClusterRoleBindingLens of TODO())
-	}
+    return "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}" bind Method.GET to { req: Request ->
+        val name = nameLens(req)
+        val pretty = prettyLens(req)
+        Response(Status.OK)
+            .with(iok8sapirbacv1ClusterRoleBindingLens of TODO())
+    }
 }

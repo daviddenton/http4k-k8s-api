@@ -19,10 +19,10 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun GetStorageV1APIResources(): RoutingHttpHandler {
-	val iok8sapimachinerypkgapismetav1APIResourceListLens = Body.auto<APIResourceList>().toLens()
+    val iok8sapimachinerypkgapismetav1APIResourceListLens = Body.auto<APIResourceList>().toLens()
 
-	return "/apis/storage.k8s.io/v1/" bind Method.GET to { req: Request ->
-		Response(Status.OK)
-			.with(iok8sapimachinerypkgapismetav1APIResourceListLens of TODO())
-	}
+    return "/apis/storage.k8s.io/v1/" bind Method.GET to { req: Request ->
+        Response(Status.OK)
+            .with(iok8sapimachinerypkgapismetav1APIResourceListLens of TODO())
+    }
 }

@@ -22,16 +22,16 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReadStorageV1beta1NamespacedCSIStorageCapacity(): RoutingHttpHandler {
-	val iok8sapistoragev1beta1CSIStorageCapacityLens = Body.auto<CSIStorageCapacity>().toLens()
-	val nameLens = Path.string().of("name")
-	val namespaceLens = Path.string().of("namespace")
-	val prettyLens = Query.string().optional("pretty")
+    val iok8sapistoragev1beta1CSIStorageCapacityLens = Body.auto<CSIStorageCapacity>().toLens()
+    val nameLens = Path.string().of("name")
+    val namespaceLens = Path.string().of("namespace")
+    val prettyLens = Query.string().optional("pretty")
 
-	return "/apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}" bind Method.GET to { req: Request ->
-		val name = nameLens(req)
-		val namespace = namespaceLens(req)
-		val pretty = prettyLens(req)
-		Response(Status.OK)
-			.with(iok8sapistoragev1beta1CSIStorageCapacityLens of TODO())
-	}
+    return "/apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}" bind Method.GET to { req: Request ->
+        val name = nameLens(req)
+        val namespace = namespaceLens(req)
+        val pretty = prettyLens(req)
+        Response(Status.OK)
+            .with(iok8sapistoragev1beta1CSIStorageCapacityLens of TODO())
+    }
 }

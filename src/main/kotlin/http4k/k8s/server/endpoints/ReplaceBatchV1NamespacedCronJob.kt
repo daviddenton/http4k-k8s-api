@@ -17,7 +17,7 @@ import org.http4k.routing.bind
 /**
  * replace the specified CronJob
  * Request:
- * 	* / * 
+ * 	* / *
  * Response:
  * 	application/json
  * 		200 OK
@@ -25,23 +25,23 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReplaceBatchV1NamespacedCronJob(): RoutingHttpHandler {
-	val iok8sapibatchv1CronJobLens = Body.auto<CronJob>().toLens()
-	val nameLens = Path.string().of("name")
-	val namespaceLens = Path.string().of("namespace")
-	val prettyLens = Query.string().optional("pretty")
-	val dryRunLens = Query.string().optional("dryRun")
-	val fieldManagerLens = Query.string().optional("fieldManager")
-	val fieldValidationLens = Query.string().optional("fieldValidation")
+    val iok8sapibatchv1CronJobLens = Body.auto<CronJob>().toLens()
+    val nameLens = Path.string().of("name")
+    val namespaceLens = Path.string().of("namespace")
+    val prettyLens = Query.string().optional("pretty")
+    val dryRunLens = Query.string().optional("dryRun")
+    val fieldManagerLens = Query.string().optional("fieldManager")
+    val fieldValidationLens = Query.string().optional("fieldValidation")
 
-	return "/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}" bind Method.PUT to { req: Request ->
-		val name = nameLens(req)
-		val namespace = namespaceLens(req)
-		val pretty = prettyLens(req)
-		val dryRun = dryRunLens(req)
-		val fieldManager = fieldManagerLens(req)
-		val fieldValidation = fieldValidationLens(req)
-		val iok8sapibatchv1CronJob = iok8sapibatchv1CronJobLens(req)
-		Response(Status.OK)
-			.with(iok8sapibatchv1CronJobLens of TODO())
-	}
+    return "/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}" bind Method.PUT to { req: Request ->
+        val name = nameLens(req)
+        val namespace = namespaceLens(req)
+        val pretty = prettyLens(req)
+        val dryRun = dryRunLens(req)
+        val fieldManager = fieldManagerLens(req)
+        val fieldValidation = fieldValidationLens(req)
+        val iok8sapibatchv1CronJob = iok8sapibatchv1CronJobLens(req)
+        Response(Status.OK)
+            .with(iok8sapibatchv1CronJobLens of TODO())
+    }
 }

@@ -16,7 +16,7 @@ import org.http4k.routing.bind
 /**
  * create a ValidatingAdmissionPolicy
  * Request:
- * 	* / * 
+ * 	* / *
  * Response:
  * 	application/json
  * 		200 OK
@@ -25,20 +25,21 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun CreateAdmissionregistrationV1alpha1ValidatingAdmissionPolicy(): RoutingHttpHandler {
-	val iok8sapiadmissionregistrationv1alpha1ValidatingAdmissionPolicyLens =
-			Body.auto<ValidatingAdmissionPolicy>().toLens()
-	val prettyLens = Query.string().optional("pretty")
-	val dryRunLens = Query.string().optional("dryRun")
-	val fieldManagerLens = Query.string().optional("fieldManager")
-	val fieldValidationLens = Query.string().optional("fieldValidation")
+    val iok8sapiadmissionregistrationv1alpha1ValidatingAdmissionPolicyLens =
+        Body.auto<ValidatingAdmissionPolicy>().toLens()
+    val prettyLens = Query.string().optional("pretty")
+    val dryRunLens = Query.string().optional("dryRun")
+    val fieldManagerLens = Query.string().optional("fieldManager")
+    val fieldValidationLens = Query.string().optional("fieldValidation")
 
-	return "/apis/admissionregistration.k8s.io/v1alpha1/validatingadmissionpolicies" bind Method.POST to { req: Request ->
-		val pretty = prettyLens(req)
-		val dryRun = dryRunLens(req)
-		val fieldManager = fieldManagerLens(req)
-		val fieldValidation = fieldValidationLens(req)
-		val iok8sapiadmissionregistrationv1alpha1ValidatingAdmissionPolicy = iok8sapiadmissionregistrationv1alpha1ValidatingAdmissionPolicyLens(req)
-		Response(Status.OK)
-			.with(iok8sapiadmissionregistrationv1alpha1ValidatingAdmissionPolicyLens of TODO())
-	}
+    return "/apis/admissionregistration.k8s.io/v1alpha1/validatingadmissionpolicies" bind Method.POST to { req: Request ->
+        val pretty = prettyLens(req)
+        val dryRun = dryRunLens(req)
+        val fieldManager = fieldManagerLens(req)
+        val fieldValidation = fieldValidationLens(req)
+        val iok8sapiadmissionregistrationv1alpha1ValidatingAdmissionPolicy =
+            iok8sapiadmissionregistrationv1alpha1ValidatingAdmissionPolicyLens(req)
+        Response(Status.OK)
+            .with(iok8sapiadmissionregistrationv1alpha1ValidatingAdmissionPolicyLens of TODO())
+    }
 }

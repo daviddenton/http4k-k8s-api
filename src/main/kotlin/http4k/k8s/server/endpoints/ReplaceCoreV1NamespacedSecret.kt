@@ -17,7 +17,7 @@ import org.http4k.routing.bind
 /**
  * replace the specified Secret
  * Request:
- * 	* / * 
+ * 	* / *
  * Response:
  * 	application/json
  * 		200 OK
@@ -25,23 +25,23 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReplaceCoreV1NamespacedSecret(): RoutingHttpHandler {
-	val iok8sapicorev1SecretLens = Body.auto<Secret>().toLens()
-	val nameLens = Path.string().of("name")
-	val namespaceLens = Path.string().of("namespace")
-	val prettyLens = Query.string().optional("pretty")
-	val dryRunLens = Query.string().optional("dryRun")
-	val fieldManagerLens = Query.string().optional("fieldManager")
-	val fieldValidationLens = Query.string().optional("fieldValidation")
+    val iok8sapicorev1SecretLens = Body.auto<Secret>().toLens()
+    val nameLens = Path.string().of("name")
+    val namespaceLens = Path.string().of("namespace")
+    val prettyLens = Query.string().optional("pretty")
+    val dryRunLens = Query.string().optional("dryRun")
+    val fieldManagerLens = Query.string().optional("fieldManager")
+    val fieldValidationLens = Query.string().optional("fieldValidation")
 
-	return "/api/v1/namespaces/{namespace}/secrets/{name}" bind Method.PUT to { req: Request ->
-		val name = nameLens(req)
-		val namespace = namespaceLens(req)
-		val pretty = prettyLens(req)
-		val dryRun = dryRunLens(req)
-		val fieldManager = fieldManagerLens(req)
-		val fieldValidation = fieldValidationLens(req)
-		val iok8sapicorev1Secret = iok8sapicorev1SecretLens(req)
-		Response(Status.OK)
-			.with(iok8sapicorev1SecretLens of TODO())
-	}
+    return "/api/v1/namespaces/{namespace}/secrets/{name}" bind Method.PUT to { req: Request ->
+        val name = nameLens(req)
+        val namespace = namespaceLens(req)
+        val pretty = prettyLens(req)
+        val dryRun = dryRunLens(req)
+        val fieldManager = fieldManagerLens(req)
+        val fieldValidation = fieldValidationLens(req)
+        val iok8sapicorev1Secret = iok8sapicorev1SecretLens(req)
+        Response(Status.OK)
+            .with(iok8sapicorev1SecretLens of TODO())
+    }
 }

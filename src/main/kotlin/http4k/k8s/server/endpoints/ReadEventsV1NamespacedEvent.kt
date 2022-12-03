@@ -22,16 +22,16 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReadEventsV1NamespacedEvent(): RoutingHttpHandler {
-	val iok8sapieventsv1EventLens = Body.auto<Event>().toLens()
-	val nameLens = Path.string().of("name")
-	val namespaceLens = Path.string().of("namespace")
-	val prettyLens = Query.string().optional("pretty")
+    val iok8sapieventsv1EventLens = Body.auto<Event>().toLens()
+    val nameLens = Path.string().of("name")
+    val namespaceLens = Path.string().of("namespace")
+    val prettyLens = Query.string().optional("pretty")
 
-	return "/apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}" bind Method.GET to { req: Request ->
-		val name = nameLens(req)
-		val namespace = namespaceLens(req)
-		val pretty = prettyLens(req)
-		Response(Status.OK)
-			.with(iok8sapieventsv1EventLens of TODO())
-	}
+    return "/apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}" bind Method.GET to { req: Request ->
+        val name = nameLens(req)
+        val namespace = namespaceLens(req)
+        val pretty = prettyLens(req)
+        Response(Status.OK)
+            .with(iok8sapieventsv1EventLens of TODO())
+    }
 }

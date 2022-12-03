@@ -17,7 +17,7 @@ import org.http4k.routing.bind
 /**
  * create a ResourceClaim
  * Request:
- * 	* / * 
+ * 	* / *
  * Response:
  * 	application/json
  * 		200 OK
@@ -26,21 +26,21 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun CreateResourceV1alpha1NamespacedResourceClaim(): RoutingHttpHandler {
-	val iok8sapiresourcev1alpha1ResourceClaimLens = Body.auto<ResourceClaim>().toLens()
-	val namespaceLens = Path.string().of("namespace")
-	val prettyLens = Query.string().optional("pretty")
-	val dryRunLens = Query.string().optional("dryRun")
-	val fieldManagerLens = Query.string().optional("fieldManager")
-	val fieldValidationLens = Query.string().optional("fieldValidation")
+    val iok8sapiresourcev1alpha1ResourceClaimLens = Body.auto<ResourceClaim>().toLens()
+    val namespaceLens = Path.string().of("namespace")
+    val prettyLens = Query.string().optional("pretty")
+    val dryRunLens = Query.string().optional("dryRun")
+    val fieldManagerLens = Query.string().optional("fieldManager")
+    val fieldValidationLens = Query.string().optional("fieldValidation")
 
-	return "/apis/resource.k8s.io/v1alpha1/namespaces/{namespace}/resourceclaims" bind Method.POST to { req: Request ->
-		val namespace = namespaceLens(req)
-		val pretty = prettyLens(req)
-		val dryRun = dryRunLens(req)
-		val fieldManager = fieldManagerLens(req)
-		val fieldValidation = fieldValidationLens(req)
-		val iok8sapiresourcev1alpha1ResourceClaim = iok8sapiresourcev1alpha1ResourceClaimLens(req)
-		Response(Status.OK)
-			.with(iok8sapiresourcev1alpha1ResourceClaimLens of TODO())
-	}
+    return "/apis/resource.k8s.io/v1alpha1/namespaces/{namespace}/resourceclaims" bind Method.POST to { req: Request ->
+        val namespace = namespaceLens(req)
+        val pretty = prettyLens(req)
+        val dryRun = dryRunLens(req)
+        val fieldManager = fieldManagerLens(req)
+        val fieldValidation = fieldValidationLens(req)
+        val iok8sapiresourcev1alpha1ResourceClaim = iok8sapiresourcev1alpha1ResourceClaimLens(req)
+        Response(Status.OK)
+            .with(iok8sapiresourcev1alpha1ResourceClaimLens of TODO())
+    }
 }

@@ -22,15 +22,15 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun ReadAdmissionregistrationV1alpha1ValidatingAdmissionPolicyBinding(): RoutingHttpHandler {
-	val iok8sapiadmissionregistrationv1alpha1ValidatingAdmissionPolicyBindingLens =
-			Body.auto<ValidatingAdmissionPolicyBinding>().toLens()
-	val nameLens = Path.string().of("name")
-	val prettyLens = Query.string().optional("pretty")
+    val iok8sapiadmissionregistrationv1alpha1ValidatingAdmissionPolicyBindingLens =
+        Body.auto<ValidatingAdmissionPolicyBinding>().toLens()
+    val nameLens = Path.string().of("name")
+    val prettyLens = Query.string().optional("pretty")
 
-	return "/apis/admissionregistration.k8s.io/v1alpha1/validatingadmissionpolicybindings/{name}" bind Method.GET to { req: Request ->
-		val name = nameLens(req)
-		val pretty = prettyLens(req)
-		Response(Status.OK)
-			.with(iok8sapiadmissionregistrationv1alpha1ValidatingAdmissionPolicyBindingLens of TODO())
-	}
+    return "/apis/admissionregistration.k8s.io/v1alpha1/validatingadmissionpolicybindings/{name}" bind Method.GET to { req: Request ->
+        val name = nameLens(req)
+        val pretty = prettyLens(req)
+        Response(Status.OK)
+            .with(iok8sapiadmissionregistrationv1alpha1ValidatingAdmissionPolicyBindingLens of TODO())
+    }
 }

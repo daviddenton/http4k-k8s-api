@@ -16,7 +16,7 @@ import org.http4k.routing.bind
 /**
  * create a StorageVersion
  * Request:
- * 	* / * 
+ * 	* / *
  * Response:
  * 	application/json
  * 		200 OK
@@ -25,19 +25,19 @@ import org.http4k.routing.bind
  * 		401 Unauthorized
  */
 fun CreateInternalApiserverV1alpha1StorageVersion(): RoutingHttpHandler {
-	val iok8sapiapiserverinternalv1alpha1StorageVersionLens = Body.auto<StorageVersion>().toLens()
-	val prettyLens = Query.string().optional("pretty")
-	val dryRunLens = Query.string().optional("dryRun")
-	val fieldManagerLens = Query.string().optional("fieldManager")
-	val fieldValidationLens = Query.string().optional("fieldValidation")
+    val iok8sapiapiserverinternalv1alpha1StorageVersionLens = Body.auto<StorageVersion>().toLens()
+    val prettyLens = Query.string().optional("pretty")
+    val dryRunLens = Query.string().optional("dryRun")
+    val fieldManagerLens = Query.string().optional("fieldManager")
+    val fieldValidationLens = Query.string().optional("fieldValidation")
 
-	return "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions" bind Method.POST to { req: Request ->
-		val pretty = prettyLens(req)
-		val dryRun = dryRunLens(req)
-		val fieldManager = fieldManagerLens(req)
-		val fieldValidation = fieldValidationLens(req)
-		val iok8sapiapiserverinternalv1alpha1StorageVersion = iok8sapiapiserverinternalv1alpha1StorageVersionLens(req)
-		Response(Status.OK)
-			.with(iok8sapiapiserverinternalv1alpha1StorageVersionLens of TODO())
-	}
+    return "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions" bind Method.POST to { req: Request ->
+        val pretty = prettyLens(req)
+        val dryRun = dryRunLens(req)
+        val fieldManager = fieldManagerLens(req)
+        val fieldValidation = fieldValidationLens(req)
+        val iok8sapiapiserverinternalv1alpha1StorageVersion = iok8sapiapiserverinternalv1alpha1StorageVersionLens(req)
+        Response(Status.OK)
+            .with(iok8sapiapiserverinternalv1alpha1StorageVersionLens of TODO())
+    }
 }
