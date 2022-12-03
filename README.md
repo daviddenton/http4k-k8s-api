@@ -1,1 +1,7 @@
-# http4k-k8s-api
+# HelloWorld
+
+## Package
+```
+./gradlew distZip
+```
+
